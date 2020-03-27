@@ -8,3 +8,8 @@ This will allow you to keep all of your ansible and prometheus configs in versio
 3) Install Ansible
     a) Delete /etc/ansible
     b) sudo ln -s <ansible-prom root directory>/ansible /etc/ansible
+    
+Test with the following command:
+```
+ansible-playbook -i hosts playbooks/test.yml
+```
