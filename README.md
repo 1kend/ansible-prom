@@ -7,7 +7,7 @@ This will allow you to keep all of your ansible and prometheus configs in versio
     a) you may need to redownload the repository prometheus/prometheus.yml file if the installation overwrites it
 3) Install Ansible
     a) Delete /etc/ansible
-    b) sudo ln -s <ansible-prom root directory>/ansible /etc/ansible
+    b) sudo ln -s \<ansible-prom root directory>/ansible /etc/ansible
     
 Test with the following command:
 ```
