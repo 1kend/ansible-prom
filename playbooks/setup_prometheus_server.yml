@@ -1,0 +1,6 @@
+---
+- hosts: prometheus_servers
+  roles: 
+    - oper
+    - systemconfig
+    - prometheus

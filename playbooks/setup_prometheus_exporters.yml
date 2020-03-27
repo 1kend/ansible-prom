@@ -1,0 +1,6 @@
+---
+- hosts: prometheus_targets
+  roles: 
+    - oper
+    - systemconfig
+    - exporters

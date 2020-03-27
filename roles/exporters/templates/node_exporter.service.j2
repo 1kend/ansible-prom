@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus node exporter service
+After=network-online.target
+
+[Service]
+User=oper
+WorkingDirectory={{node_exporter_install_dir}}
+Restart=on-failure
+RestartSec=30
+TimeoutSec=120
+ExecStart={{node_exporter_install_dir}}/node_exporter
+ExecStop=/usr/bin/pkill node_exporter

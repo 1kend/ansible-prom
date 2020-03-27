@@ -1,0 +1,13 @@
+---
+- name: test
+  debug:
+    msg: '{{prometheus_exporters}}'
+
+- name: test2
+  with_items: '{{prometheus_exporters}}'
+  debug:
+    msg: '{{item}}'
+
+- name: Install Prometheus Exporters
+  with_items: '{{prometheus_exporters}}'
+  include_tasks: '{{item}}.yml'

@@ -1,0 +1,22 @@
+---
+- name: Do system config
+  block: 
+  # - name: test
+  #   with_items: '{{firewall_rules}}'
+  #   debug:
+  #     msg: '{{item}}'
+  - name: firewall config
+    when: firewall_rules is defined
+    block:
+    - name: Ensure simple firewall rules are applied
+      with_items: '{{firewall_rules}}'
+      firewalld:
+        port: '{{ item.port }}'
+        permanent: '{{ item.permanent }}'
+        state: '{{ item.state }}'
+
+    - name: restart firewalld
+      service:
+        name: firewalld
+        enabled: yes
+        state: restarted

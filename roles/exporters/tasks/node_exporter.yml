@@ -1,0 +1,41 @@
+---
+- name: Install Node exporter
+  block: 
+
+  - name: test
+    debug: 
+      msg: sssss
+
+  - name: Ensure node exporter dir exists
+    file:
+      path: "{{node_exporter_install_dir}}"
+      state: directory
+      owner: oper
+      group: oper
+
+  - name: Ensure node-exporter is extracted
+    unarchive:
+      src: node_exporter-1.0.0-rc.0.linux-amd64.tar.gz
+      dest: "{{node_exporter_install_dir}}"
+      extra_opts: 
+        - --strip-components=1
+
+  - name: Ensure node_exporter install has file owner set
+    file:
+      path: "{{node_exporter_install_dir}}"
+      owner: oper
+      group: oper
+      recurse: true
+
+  - name: Ensure the Systemctl Unit file is installed
+    template:
+      src: templates/node_exporter.service.j2
+      dest: "/etc/systemd/system/node_exporter.service"
+      owner: oper
+      group: oper
+  
+  - name: Ensure the node_exporter serice is enabled and started
+    service:
+      name: node_exporter
+      enabled: yes
+      state: started

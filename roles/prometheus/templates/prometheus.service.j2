@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus service
+After=network-online.target
+
+[Service]
+User=oper
+WorkingDirectory={{prometheus_install_dir}}
+Restart=on-failure
+RestartSec=30
+TimeoutSec=120
+ExecStart={{prometheus_install_dir}}/prometheus --config.file=prometheus.yml --storage.tsdb.path={{prometheus_data_dir}}
+ExecStop=/usr/bin/pkill prometheus

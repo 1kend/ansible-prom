@@ -1,0 +1,6 @@
+---
+prometheus_data_dir: /export/data/prometheus
+prometheus_install_dir: /opt/prometheus
+firewall_rules:
+  - {port: "9090/tcp", permanent: "yes", state: "enabled"}
+  - {port: "9100/tcp", permanent: "yes", state: "enabled"}

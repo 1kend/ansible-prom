@@ -1,0 +1,17 @@
+all:
+  children:
+    vms:
+      hosts:
+        192.168.56.103:
+        192.168.56.104:
+    prometheus_servers:
+      hosts:
+        192.168.56.103:
+    prometheus_targets:
+      hosts:
+        192.168.56.103:
+        192.168.56.104:
+    vm_creds:
+      hosts:
+        192.168.56.103:
+        192.168.56.104:

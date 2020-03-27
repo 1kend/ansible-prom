@@ -1,0 +1,8 @@
+---
+- name: Start Prometheus
+  block: 
+  - name: Ensure the prometheus serice is running
+    service:
+      name: prometheus
+      state: restarted
+      enabled: yes

@@ -1,0 +1,6 @@
+---
+prometheus_exporters:
+  node_exporter:
+    port: "9100"
+prometheus_exporter_labels:
+  systemType: 'vm'

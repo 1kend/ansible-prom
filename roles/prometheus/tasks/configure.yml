@@ -1,0 +1,14 @@
+---
+- name: Configure Prometheus
+  block: 
+  - name: test
+    with_items: "{{groups['prometheus_targets']}}"
+    debug:
+      msg: "{{item}}"
+
+  - name: Ensure prometheus.yml
+    template:
+      src: templates/prometheus.yml.j2
+      dest: "{{prometheus_install_dir}}/prometheus.yml"
+      owner: oper
+      group: oper

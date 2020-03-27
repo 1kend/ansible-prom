@@ -1,0 +1,48 @@
+---
+# - name: Copy prometheus tar
+#   copy: 
+#     src: prometheus-2.16.0.linux-amd64.tar.gz
+#     dest: /opt/
+
+- name: Install Prometheus
+  block: 
+  - name: Ensure Prometheus install dir exists
+    file:
+      path: "{{prometheus_install_dir}}"
+      state: directory
+      owner: oper
+      group: oper
+
+  - name: Ensure Prometheus data dir exists
+    file:
+      path: "{{prometheus_data_dir}}"
+      state: directory
+      owner: oper
+      group: oper
+
+  - name: Ensure Prometheus is extracted
+    unarchive:
+      src: prometheus-2.16.0.linux-amd64.tar.gz
+      dest: "{{prometheus_install_dir}}"
+      extra_opts: 
+        - --strip-components=1
+
+  - name: Ensure Prometheus install has file owner set
+    file:
+      path: "{{prometheus_install_dir}}"
+      owner: oper
+      group: oper
+      recurse: true
+
+  - name: Ensure the Systemctl Unit file is installed
+    template:
+      src: templates/prometheus.service.j2
+      dest: "/etc/systemd/system/prometheus.service"
+      owner: oper
+      group: oper
+    
+  - name: Ensure the prometheus serice is enabled
+    service:
+      name: prometheus
+      enabled: yes
+      
