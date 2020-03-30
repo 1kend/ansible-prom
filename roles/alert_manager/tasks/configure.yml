@@ -1,0 +1,10 @@
+---
+- name: Configure Alert Manger
+  block: 
+
+  - name: Ensure alertmanager.yml
+    template:
+      src: templates/alertmanager.yml.j2
+      dest: "{{alert_manager_install_dir}}/alertmanager.yml"
+      owner: oper
+      group: oper

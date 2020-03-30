@@ -16,6 +16,8 @@ prometheus_exporters:
     port: "12345"
   cpu-exporter:
     port: "8000"
+  push_gateway:
+    port: "9091"
 prometheus_exporter_labels:
   systemType: 'vm'
   example: '2'

@@ -6,3 +6,4 @@ prometheus_exporter_types:
   - cAdvisor
   - instrumentation-example
   - cpu-exporter
+  - push_gateway

@@ -1,0 +1,35 @@
+- name: Install alert_manager
+  block: 
+  - name: Ensure alert_manager install dir exists
+    file:
+      path: "{{alert_manager_install_dir}}"
+      state: directory
+      owner: oper
+      group: oper
+
+  - name: Ensure alert_manager is extracted
+    unarchive:
+      src: alertmanager-0.15.2.linux-amd64.tar.gz
+      dest: "{{alert_manager_install_dir}}"
+      extra_opts: 
+        - --strip-components=1
+
+  - name: Ensure alert_manager install has file owner set
+    file:
+      path: "{{alert_manager_install_dir}}"
+      owner: oper
+      group: oper
+      recurse: true
+
+  - name: Ensure the Systemctl Unit file is installed
+    template:
+      src: templates/alert_manager.service.j2
+      dest: "/etc/systemd/system/alert_manager.service"
+      owner: oper
+      group: oper
+    
+  - name: Ensure the alert_manager serice is enabled
+    service:
+      name: alert_manager
+      enabled: yes
+      

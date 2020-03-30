@@ -11,6 +11,9 @@ all:
       hosts:
         192.168.56.103:
         192.168.56.104:
+    alert_managers:
+      hosts:
+        192.168.56.103:
     vm_creds:
       hosts:
         192.168.56.103:

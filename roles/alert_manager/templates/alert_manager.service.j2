@@ -1,0 +1,12 @@
+[Unit]
+Description=Alert Manager service
+After=network-online.target
+
+[Service]
+User=oper
+WorkingDirectory={{alert_manager_install_dir}}
+Restart=on-failure
+RestartSec=30
+TimeoutSec=120
+ExecStart={{alert_manager_install_dir}}/prometheus
+ExecStop=/usr/bin/pkill alert_manager

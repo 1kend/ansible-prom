@@ -4,3 +4,4 @@
     - oper
     - systemconfig
     - prometheus
+    - alert_manager
