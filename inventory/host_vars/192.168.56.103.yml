@@ -1,0 +1,5 @@
+firewall_rules:
+  - {port: "9090/tcp", permanent: "yes", state: "enabled"}
+  - {port: "9100/tcp", permanent: "yes", state: "enabled"}
+  - {port: "9093/tcp", permanent: "yes", state: "enabled"}
+  - {port: "9094/tcp", permanent: "yes", state: "enabled"}

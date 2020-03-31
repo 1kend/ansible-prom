@@ -1,7 +1,7 @@
 ---
 - name: Start Alert Manager
   block: 
-  - name: Ensure the prometheus serice is running
+  - name: Ensure the Alert Manager serice is running
     service:
       name: alert_manager
       state: restarted

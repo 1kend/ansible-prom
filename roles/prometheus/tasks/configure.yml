@@ -12,3 +12,17 @@
       dest: "{{prometheus_install_dir}}/prometheus.yml"
       owner: oper
       group: oper
+
+  - name: Ensure alerting_rules.yml
+    template:
+      src: templates/alerting_rules.yml.j2
+      dest: "{{prometheus_install_dir}}/alerting_rules.yml"
+      owner: oper
+      group: oper
+  
+  - name: Ensure recording_rules.yml
+    template:
+      src: templates/recording_rules.yml.j2
+      dest: "{{prometheus_install_dir}}/recording_rules.yml"
+      owner: oper
+      group: oper

@@ -10,10 +10,12 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      # - alertmanager:9093
+      - 192.168.56.103:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
+    - alerting_rules.yml
+    - recording_rules.yml
   # - "exporter_rules.yml"
   # - "second_rules.yml"
 

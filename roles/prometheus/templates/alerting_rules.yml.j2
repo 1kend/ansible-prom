@@ -1,0 +1,12 @@
+groups:
+- name: demo-service-alerts
+  rules:
+  - alert: exporter down
+    expr: | 
+          up==0
+    for: 30s
+    labels:
+      severity: critical
+    annotations: {% raw %}
+      description: "the exporter at {{$labels.instance}} is down."
+{% endraw %}
